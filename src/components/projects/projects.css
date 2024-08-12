@@ -1,0 +1,14 @@
+.pro-container{
+    width: 65%;
+    margin: auto;
+}
+.pro-title{
+    font-size: 40px;
+    text-align: center;
+}
+.pro-info{
+    display: grid;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

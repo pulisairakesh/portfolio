@@ -1,0 +1,55 @@
+/* @import 'bootstrap/dist/css/bootstrap.css'; */
+
+:root {
+  --hue: 0;
+  --sat: 0%;
+  --title-color: hsl(var(--hue), var(--sat), 20%);
+  --title-color-dark: hsl(206, 88%, 71%);
+  --body-color: hsl(var(--hue), var(--sat), 98%);
+  --body-font: "Nunito", sans-serif;
+}
+
+body {
+  background-color: var(--body-color);
+  font-family: var(--body-font);
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+}
+a{
+  text-decoration: none;
+}
+.section__title, .section__subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Custom button styles */
+.button {
+  background-color: var(--title-color);
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--title-color-dark);
+}
+
+.button__icon {
+  margin-left: 0.5rem;
+}
+.whole{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main{
+  flex-grow: 1;
+}

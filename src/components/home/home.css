@@ -1,0 +1,106 @@
+.home-social{
+    display: grid;
+    gap: 1rem;
+}
+.ho-container{
+    margin-top: 6% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 65%;
+    margin: auto;
+    margin-bottom: 6%;
+}
+.title{
+    font-weight: 550;
+    font-size: 60px;
+    margin-bottom:0px ;
+}
+.subtitle{
+    font-size: 20px;
+}
+.home-social-icon{
+    color: black;
+}
+.home-img {
+    background: url(../../assets/profileBW.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* filter: grayscale(.5); */
+    box-shadow: inset 0 0 0 9px rgb(225 225 225 / 30%);
+    order: 1;
+    justify-self: center;
+    width: 300px;
+    height: 300px;
+    animation: profile__animate 8s ease-in-out infinite 1s;
+}
+
+@keyframes profile__animate {
+    0% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+}
+.home-scroll-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-scroll-name {
+    color: var(--title-color);
+    
+}
+
+.home-scroll-arrow {
+    font-size: 1.25rem;
+    color: black;
+}
+
+
+
+@media screen and (max-width:1025px){
+    .description{
+       width: 200px;
+    }
+    .title{
+        font-size: 50px;
+    }
+}
+@media screen and (max-width:768px){
+    .ho-container{
+        width: 85%;
+        justify-content: space-evenly;
+    }
+    .home-scroll {
+        display: none;
+    }
+    .title{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:426px){
+
+    .data{
+        width: 90%;
+        padding-left: 10px;
+    }
+    .home-img{
+        width: 100%;
+    }
+    .data{
+        display: grid;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .btnn{
+        width: 130px;
+    }
+}
