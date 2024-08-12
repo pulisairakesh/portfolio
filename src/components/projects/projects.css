@@ -12,3 +12,40 @@
     margin-top: 10%;
     margin-bottom: 10%;
 }
+.pro-box{
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 3rem 3rem 3rem 3rem;
+    border-radius: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.pro-box:hover {
+    transform: translateY(-10%); /* Adjust the percentage as needed */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.x{
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.btnp{
+    color: aliceblue;
+    padding-left: 15%;
+}
+@media screen and (max-width:769px){
+    .x{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width:426px){
+    .x{
+        grid-template-columns: 1fr;
+    }
+}

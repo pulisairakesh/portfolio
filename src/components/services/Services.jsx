@@ -77,7 +77,7 @@ const Services = () => {
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    Front end Apps, SPA's, responsive UI's.
+                                    Front end SPA's, responsive UI's.
                                 </p>
                             </li>
                             <li className="services-modal-service">
@@ -117,7 +117,7 @@ const Services = () => {
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    scalable abackend servers applications.
+                                    scalable abackend apps.
                                 </p>
                             </li>
                             <li className="services-modal-service">

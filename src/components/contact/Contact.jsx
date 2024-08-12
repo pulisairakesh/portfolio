@@ -8,8 +8,16 @@ const Contact = () => {
     
     const sendEmail = (e) => {
         e.preventDefault();
-    
-        emailjs.sendForm('service_s53x8mc', 'template_fwq8n7v', form.current, 'cXginQ40keRVEt1YV')
+        console.log(form.current)
+        emailjs.sendForm('service_pbrqber', 'template_yq3bgx5', form.current, 'eXqU5sD7F_TPp2BQf')
+        .then((result) => {
+            console.log(result.text);
+            alert("Message sent successfully!");
+        }, (error) => {
+            console.log(error.text);
+            alert("Failed to send the message, please try again later.");
+        });
+
         e.target.reset();
     };
   
@@ -43,17 +51,17 @@ const Contact = () => {
                 <form ref={form} onSubmit={sendEmail} className="contact-form">
                     <div className="contact-form-div">
                         <label className="contact-form-tag">Name</label>
-                        <input type="text" name="name" className="contact-form-input" placeholder="Type your name" />
+                        <input type="text" name="from_name" className="contact-form-input" placeholder="Type your name" />
                     </div>
 
                     <div className="contact-form-div">
                         <label className="contact-form-tag">Email</label>
-                        <input type="email" name="email" className="contact-form-input" placeholder="Type your email" />
+                        <input type="email" name="reply_to" className="contact-form-input" placeholder="Type your email" />
                     </div>
 
                     <div className="contact-form-div contact-form-area">
                         <label className="contact-form-tag">Project</label>
-                        <textarea name="project" cols="30" rows="10" className="contact-form-input" placeholder="Provide some project details..."></textarea>
+                        <textarea name="message" cols="30" rows="10" className="contact-form-input" placeholder="Provide some project details..."></textarea>
                     </div>
 
                     <button href="#contact" className="button btcn">
