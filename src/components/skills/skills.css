@@ -82,12 +82,24 @@
         column-gap: 1.5rem;
     }
     .skills-name {
-        font-size: var(--small-font-size);
+        font-size: 16px;
     }
 }
-@media screen and (max-width:326px){
+@media screen and (max-width:360px){
     .skills-container{
-        margin-left: 15px;
         padding: 0;
+    }
+    .skills-content{
+        width: 70%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .skills-name {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width:310px){
+    .skills-container{
+        margin: 20px;
     }
 }

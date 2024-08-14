@@ -152,5 +152,8 @@
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 310px) {
+    .contact-container{
+        width: 95%;
+    }
 }
