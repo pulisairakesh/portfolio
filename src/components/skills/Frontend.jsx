@@ -66,7 +66,7 @@ const Frontend = () => {
                     <div className="skills-data">
                         <HiCheckBadge />
                         <div>
-                            <p className="skills-name">Rxjs/Redux</p>
+                            <p className="skills-name">Rxjs</p>
                         </div>
                     </div>
                 </div>
