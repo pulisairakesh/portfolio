@@ -26,7 +26,7 @@ const Services = () => {
             <div className="services-content">
                 <div>
                     <HiOutlineClipboardList className="services-icon" />
-                    <p className="services-title">Web<br />Developer</p>
+                    <p className="services-title">Web App<br />Developer</p>
                 </div>
                 <span className="services-button" onClick={() => toggleTab1(1)}>
                     View More
@@ -43,13 +43,13 @@ const Services = () => {
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    Web page and app development
+                                    Web app development through secure coding.
                                 </p>
                             </li>
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    Integrate creative colloboration
+                                    Database Management.
                                 </p>
                             </li>
         
@@ -60,7 +60,7 @@ const Services = () => {
             <div className="services-content">
                 <div>
                     <HiOutlineClipboardList className="services-icon" />
-                    <p className="services-title">Frontend<br />Developer</p>
+                    <p className="services-title">Application<br />Security</p>
                 </div>
                 <span className="services-button" onClick={() => toggleTab2(1)}>
                     View More
@@ -69,21 +69,21 @@ const Services = () => {
                 <div className={toggleState2 === 1 ? "services-modal active-modal" : "services-modal"}>
                     <div className="services-modal-content">
                         <HiX onClick={() => toggleTab2(0)} className="services-modal-close" />
-                        <p className="services-modal-title">Developer</p>
+                        <p className="services-modal-title">App Sec Analysis</p>
                         <p className="services-modal-description">
-                            Hands on experience in Front end development providing quality work.
+                            Finding Web App Vulnerabilities
                         </p>
                         <ul className="services-modal-services">
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    Front end SPA's, responsive UI's.
+                                    Vulnerability Scanning.
                                 </p>
                             </li>
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    Interactive websites.
+                                    Penetration Testing.
                                 </p>
                             </li>
         
@@ -94,7 +94,7 @@ const Services = () => {
             <div className="services-content">
                 <div>
                     <HiOutlineClipboardList className="services-icon" />
-                    <p className="services-title">Backend<br />Developer</p>
+                    <p className="services-title">Agile Skills<br /></p>
                 </div>
                 <span className="services-button" onClick={() => toggleTab3(1)}>
                     View More
@@ -103,27 +103,15 @@ const Services = () => {
                 <div className={toggleState3 === 1 ? "services-modal active-modal" : "services-modal"}>
                     <div className="services-modal-content">
                         <HiX onClick={() => toggleTab3(0)} className="services-modal-close" />
-                        <p className="services-modal-title">Developer</p>
+                        <p className="services-modal-title">Adaptability & Collaboration through Agile Methodology</p>
                         <p className="services-modal-description">
-                            can provide scalable backend services.
+                            
                         </p>
                         <ul className="services-modal-services">
                             <li className="services-modal-service">
                                 <HiOutlineCheckCircle className="services-modal-icon" />
                                 <p className="services-modal-info">
-                                    backend and cloud services.
-                                </p>
-                            </li>
-                            <li className="services-modal-service">
-                                <HiOutlineCheckCircle className="services-modal-icon" />
-                                <p className="services-modal-info">
-                                    scalable abackend apps.
-                                </p>
-                            </li>
-                            <li className="services-modal-service">
-                                <HiOutlineCheckCircle className="services-modal-icon" />
-                                <p className="services-modal-info">
-                                    deployment and maintainance.
+                                    Ability to learn and adapt.
                                 </p>
                             </li>
                         </ul>

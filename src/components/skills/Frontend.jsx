@@ -4,7 +4,7 @@ import { HiCheckBadge } from "react-icons/hi2";
 const Frontend = () => {
     return (
         <div className="skills-content">
-            <p className="skills-title">Frontend</p>
+            <p className="skills-title">Web Application</p>
             <div className="skills-box">
                 <div className="skills-group">
                     <div className="skills-data">
@@ -19,24 +19,19 @@ const Frontend = () => {
                             <p className="skills-name">CSS/SASS</p>
                         </div>
                     </div>
-                    <div className="skills-data">
-                        <HiCheckBadge />
-                        <div>
-                            <p className="skills-name">Bootstrap</p>
-                        </div>
-                    </div>
+        
                     <div className="skills-data">
                         <HiCheckBadge />
                         <div>
                             <p className="skills-name">Angular</p>
                         </div>
                     </div>
-                    <div className="skills-data">
-                        <HiCheckBadge />
-                        <div>
-                            <p className="skills-name">Figma</p>
-                        </div>
-                    </div>
+                     <div className="skills-data">
+                                  <HiCheckBadge />
+                                  <div>
+                                      <p className="skills-name">MySQL</p>
+                                  </div>
+                              </div>
                 </div>
                 <div className="skills-group">
                     <div className="skills-data">
@@ -60,15 +55,10 @@ const Frontend = () => {
                     <div className="skills-data">
                         <HiCheckBadge />
                         <div>
-                            <p className="skills-name">Gui's</p>
+                            <p className="skills-name">Express.js</p>
                         </div>
                     </div>
-                    <div className="skills-data">
-                        <HiCheckBadge />
-                        <div>
-                            <p className="skills-name">Rxjs</p>
-                        </div>
-                    </div>
+              
                 </div>
             </div>
         </div>

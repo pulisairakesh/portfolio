@@ -11,24 +11,13 @@ const Projects = ()=>{
                 <div className="x">
                 <div className="pro-box">
                     <HiOutlineTerminal className="about-icon" />
-                    <h3 className="about-title">Portofolio</h3>
-                </div>
-                <div className="pro-box">
-                    <HiOutlineTerminal className="about-icon" />
-                    <h3 className="about-title">Admin panel</h3>
-                </div>
-                <div className="pro-box">
-                    <HiOutlineTerminal className="about-icon" />
                     <h3 className="about-title">Quiz application</h3>
                 </div>
                 <div className="pro-box">
                     <HiOutlineTerminal className="about-icon" />
                     <h3 className="about-title">Job Hunt application</h3>
                 </div>
-                <div className="pro-box">
-                    <HiOutlineTerminal className="about-icon" />
-                    <h3 className="about-title">event manager</h3>
-                </div>
+ 
                 <div className="pro-box">
                     <HiOutlineTerminal className="about-icon" />
                     <h3 className="about-title">Todo App Gui</h3>

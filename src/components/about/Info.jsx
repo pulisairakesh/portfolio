@@ -7,7 +7,7 @@ const Info = () => {
         <div className="about-box">
             <HiOutlineDesktopComputer className="about-icon" />
             <h3 className="about-title">Experience</h3>
-            <span className="about-subtitle">3 months</span>
+            <span className="about-subtitle">6+ months</span>
         </div>
         <div className="about-box">
             <HiOutlineTerminal className="about-icon" />

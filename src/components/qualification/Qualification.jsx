@@ -77,13 +77,13 @@ const Qualification = () => {
                 </div>
                 <div className={toggleState === 2 ? "qualification-content qualification-content-active"
                     : "qualification-content"}>
-                    <div className="qualification-data">
+               <div className="qualification-data">
                         <div>
-                            <h3 className="qualification-title">Full Stack Intern</h3>
-                            <span className="qualification-subtitle">MEAN Stack</span>
+                            <h3 className="qualification-title">Cyber Security Intern</h3>
+                            <span className="qualification-subtitle">SecOps</span>
                             <div className="qualification-calendar">
                                 <HiOutlineCalendar className="qualification-calendar-icon" />
-                                May 7 - Aug 7
+                                Oct 1 2024 - present.
                             </div>
                         </div>
                         <div>
@@ -91,6 +91,7 @@ const Qualification = () => {
                             <span className="qualification-line"></span>
                         </div>
                     </div>
+                  
                     <div className="qualification-data">
                         <div></div>
                         <div>
@@ -98,12 +99,26 @@ const Qualification = () => {
                             <span className="qualification-line"></span>
                         </div>
                         <div>
+                            <h3 className="qualification-title">Full Stack Intern</h3>
+                            <span className="qualification-subtitle">MEAN Stack</span>
+                            <div className="qualification-calendar">
+                                <HiOutlineCalendar className="qualification-calendar-icon" />
+                                May 7 2024 - Aug 7 2024
+                            </div>
+                        </div>
+                    </div>
+                    <div className="qualification-data">
+                        <div>
                             <h3 className="qualification-title">Team lead</h3>
                             <span className="qualification-subtitle">IOTEssence</span>
                             <div className="qualification-calendar">
                                 <HiOutlineCalendar className="qualification-calendar-icon" />
                                 2023
                             </div>
+                        </div>
+                        <div>
+                            <span className="qualification-rounder"></span>
+                            <span className="qualification-line"></span>
                         </div>
                     </div>
                 </div>
