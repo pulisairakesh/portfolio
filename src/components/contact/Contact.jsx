@@ -35,9 +35,9 @@ const Contact = () => {
                         <HiOutlineMail className="contact-card-icon" />
                         
                         <h3 className="contact-card-title">Email</h3>
-                        <span className="contact-card-data">pulisairakesh2157@gmail.com</span>
+                        <span className="contact-card-data">sairakesh2157@gmail.com</span>
                         
-                        <a href="mailto:pulisairakesh2157@gmail.com" className="contact-button">
+                        <a href="mailto:sairakesh2157@gmail.com" className="contact-button">
                             Write Me{" "} 
                             <HiOutlineArrowSmRight className="contact-button-icon" />
                         </a>
