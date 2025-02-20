@@ -73,9 +73,6 @@ const Contact = () => {
     };
 
     const validateMessage = (message) => {
-        if (!message || message.trim().length < 10 || message.length > 1000) {
-            return "Message must be between 10 and 1000 characters";
-        }
         if (containsXSS(message)) {
             return "Message contains invalid characters or potential script";
         }
