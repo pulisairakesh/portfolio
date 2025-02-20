@@ -22,8 +22,6 @@ const Contact = () => {
         ALLOWED_ATTR: [], // No attributes allowed
         KEEP_CONTENT: true, // Keep the text content
         RETURN_DOM: false, // Return a string
-        RETURN_DOM_FRAGMENT: false,
-        RETURN_DOM_IMPORT: false,
     });
 
     // Enhanced XSS detection patterns
@@ -32,79 +30,45 @@ const Contact = () => {
         /<.*\son\w+.*=.*>/i,
         /<.*style.*=.*\bexpression\b.*>/i,
         /<.*href.*=.*javascript:.*>/i,
-        /<.*href.*=.*data:.*>/i,
-        /<.*href.*=.*vbscript:.*>/i,
-        /<.*src.*=.*javascript:.*>/i,
-        /<.*src.*=.*data:.*>/i,
-        /<.*src.*=.*vbscript:.*>/i,
-        /<.*srcset.*=.*javascript:.*>/i,
-        /<.*formaction.*=.*javascript:.*>/i,
-        /<.*action.*=.*javascript:.*>/i,
         /<.*iframe.*>/i,
         /<.*object.*>/i,
-        /<.*embed.*>/i,
-        /<.*applet.*>/i,
-        /<.*meta.*>/i,
-        /<.*svg.*onload.*>/i,
-        /<.*svg.*<script.*>/i,
-        /<.*img.*onerror.*>/i
+        /<.*embed.*>/i
     ];
 
     // Function to check for XSS patterns
     const containsXSS = (input) => {
-        // Early return for empty inputs
         if (!input || input.trim() === '') return false;
-        
-        // Check against all patterns
         return xssPatterns.some(pattern => pattern.test(input));
     };
 
-    // Sanitize and validate functions
+    // Sanitize input
     const sanitizeInput = (input) => {
         if (!input) return "";
-        
-        // First strip all HTML completely
-        let sanitized = DOMPurify.sanitize(input, {
+        // Strip all HTML completely
+        return DOMPurify.sanitize(input, {
             ALLOWED_TAGS: [],
             ALLOWED_ATTR: []
-        });
-        
-        // Then encode HTML special characters
-        sanitized = sanitized
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-            
-        return sanitized.trim();
+        }).trim();
     };
 
     const validateName = (name) => {
         if (!name || name.trim().length < 2 || name.length > 50) {
             return "Name must be between 2 and 50 characters";
         }
-        
-        // Check for potential XSS in name
         if (containsXSS(name)) {
             return "Name contains invalid characters or potential script";
         }
-        
         return "";
     };
 
     const validateEmail = (email) => {
-        // RFC 5322 compliant email regex
         const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (!email || !emailRegex.test(email)) {
             return "Please enter a valid email address";
         }
-        
-        // Check for potential XSS in email
         if (containsXSS(email)) {
             return "Email contains invalid characters or potential script";
         }
-        
         return "";
     };
 
@@ -112,12 +76,9 @@ const Contact = () => {
         if (!message || message.trim().length < 10 || message.length > 1000) {
             return "Message must be between 10 and 1000 characters";
         }
-        
-        // Check for potential XSS in message
         if (containsXSS(message)) {
             return "Message contains invalid characters or potential script";
         }
-        
         return "";
     };
 
@@ -126,7 +87,6 @@ const Contact = () => {
         
         // Real-time sanitization of input
         const sanitizedValue = sanitizeInput(value);
-        e.target.value = sanitizedValue;
         
         // Validate and set any errors
         let error = "";
@@ -151,38 +111,16 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
         
-        // Clone the form data and sanitize all inputs
+        // Get form data for validation
         const formData = new FormData(form.current);
-        const sanitizedFormData = new FormData();
+        const formName = sanitizeInput(formData.get('from_name'));
+        const formEmail = sanitizeInput(formData.get('reply_to'));
+        const formMessage = sanitizeInput(formData.get('message'));
         
-        // Sanitize each field and check for XSS
-        let hasXSS = false;
-        
-        for (const [key, value] of formData.entries()) {
-            if (typeof value === 'string') {
-                if (containsXSS(value)) {
-                    hasXSS = true;
-                    break;
-                }
-                
-                const sanitizedValue = sanitizeInput(value);
-                sanitizedFormData.append(key, sanitizedValue);
-            } else {
-                sanitizedFormData.append(key, value);
-            }
-        }
-        
-        // If XSS detected, block submission
-        if (hasXSS) {
-            setAlertMessage("Potential security threat detected. Please remove any code or script elements.");
-            setStatus(false);
-            return;
-        }
-        
-        // Validate sanitized data
-        const nameError = validateName(sanitizedFormData.get('from_name'));
-        const emailError = validateEmail(sanitizedFormData.get('reply_to'));
-        const messageError = validateMessage(sanitizedFormData.get('message'));
+        // Validate all fields
+        const nameError = validateName(formName);
+        const emailError = validateEmail(formEmail);
+        const messageError = validateMessage(formMessage);
         
         setFormErrors({
             name: nameError,
@@ -197,39 +135,32 @@ const Contact = () => {
             return;
         }
         
-        // Get reCAPTCHA token
+        // Check reCAPTCHA
         const token = recaptchaRef.current.getValue();
-        
-        // Honeypot check
-        const honeypotChecked = form.current.bot_check.checked;
-        if (honeypotChecked) {
-            console.log("Spam detected");
-            setAlertMessage("Your submission was not successful. Please try again.");
-            setStatus(false);
-            return;
-        }
-        
-        // reCAPTCHA validation
         if (!token) {
             setAlertMessage("Please complete the reCAPTCHA verification");
             setStatus(false);
             return;
         }
         
-        // Create a temporary form with sanitized data for EmailJS
-        const tempForm = document.createElement('form');
-        for (const [key, value] of sanitizedFormData.entries()) {
-            const input = document.createElement('input');
-            input.name = key;
-            input.value = value;
-            tempForm.appendChild(input);
+        // Honeypot check
+        const honeypotChecked = form.current.bot_check.checked;
+        if (honeypotChecked) {
+            setAlertMessage("Your submission was not successful. Please try again.");
+            setStatus(false);
+            return;
         }
         
-        // Proceed with email sending using sanitized data
+        // Important: Update the form values with sanitized content before submission
+        form.current.from_name.value = formName;
+        form.current.reply_to.value = formEmail;
+        form.current.message.value = formMessage;
+        
+        // Send the sanitized form directly
         emailjs.sendForm(
             'service_l0yanyv', 
             'template_zhmjde9', 
-            tempForm, 
+            form.current, 
             'AEdG7o_wOq1b_2plk'
         )
         .then((result) => {
@@ -288,14 +219,6 @@ const Contact = () => {
                                 className={`contact-form-input ${formErrors.name ? "error-input" : ""}`} 
                                 placeholder="Type your name" 
                                 onChange={handleInputChange}
-                                onPaste={(e) => {
-                                    e.preventDefault();
-                                    const pastedText = sanitizeInput(e.clipboardData.getData('text'));
-                                    e.target.value = pastedText;
-                                    handleInputChange({
-                                        target: { name: 'from_name', value: pastedText }
-                                    });
-                                }}
                                 maxLength={50}
                                 required 
                             />
@@ -310,14 +233,6 @@ const Contact = () => {
                                 className={`contact-form-input ${formErrors.email ? "error-input" : ""}`} 
                                 placeholder="Type your email" 
                                 onChange={handleInputChange}
-                                onPaste={(e) => {
-                                    e.preventDefault();
-                                    const pastedText = sanitizeInput(e.clipboardData.getData('text'));
-                                    e.target.value = pastedText;
-                                    handleInputChange({
-                                        target: { name: 'reply_to', value: pastedText }
-                                    });
-                                }}
                                 maxLength={100}
                                 required 
                             />
@@ -333,14 +248,6 @@ const Contact = () => {
                                 className={`contact-form-input ${formErrors.message ? "error-input" : ""}`} 
                                 placeholder="Provide some project details..." 
                                 onChange={handleInputChange}
-                                onPaste={(e) => {
-                                    e.preventDefault();
-                                    const pastedText = sanitizeInput(e.clipboardData.getData('text'));
-                                    e.target.value = pastedText;
-                                    handleInputChange({
-                                        target: { name: 'message', value: pastedText }
-                                    });
-                                }}
                                 maxLength={1000}
                                 required
                             ></textarea>
